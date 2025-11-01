@@ -9,7 +9,6 @@
 #include "vector.h"
 #include "movie.h"
 #include <string.h>
-#define strcasecmp _stricmp
 #include <stdlib.h>
 
 
