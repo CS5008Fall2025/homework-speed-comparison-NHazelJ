@@ -1,9 +1,9 @@
 /**
  * Simple Linked list implementation
  *
- * @author: STUDENT ADD YOUR NAME
+ * @author: Najib Mosquera
  * @class: CS 5008
- * @term: UPDATE WITH CURRENT SEMESTER
+ * @term: Fall 2025
  */
 #ifndef LINKED_LIST_H
 #define LINKED_LIST_H

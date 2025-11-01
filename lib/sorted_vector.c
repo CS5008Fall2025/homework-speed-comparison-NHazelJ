@@ -1,14 +1,46 @@
 /**
  * Contains functions for the sorted vector struct
  *
- * @author: STUDENT ADD YOUR NAME
+ * @author: Najib Mosquera
  * @class: CS 5008
- * @term: UPDATE WITH CURRENT SEMESTER
+ * @term: Fall 2025
 **/
 
 #include "vector.h"
 #include "movie.h"
+#include <string.h>
+#define strcasecmp _stricmp
+#include <stdlib.h>
 
+
+// creating a helper function for binary search to find the lower bound index
+static int lower_bound_by_title(SortedMovieVector *vector, const char *key_title) {
+    int low = 0;
+    // search in the half-open range [low, high)
+    int high = vector->size;
+
+    while (low < high) {
+        // avoiding overflow so we use (low+high)/2
+        int middle = low + (high - low) / 2;
+        Movie *middle_movie = vector->movies[middle];
+
+        int comparison = strcasecmp(middle_movie->title, key_title);
+
+        if (comparison < 0) {
+            // middle_movie->title is less than key_title
+            // so insertion point must be to the right of middle
+            low = middle + 1;
+        } else {
+            // middle_movie -> title is greater or equal to key_title
+            // so the insertion point is at middle or to the left of middle
+            high = middle;
+        }
+    }
+
+    // when loop ends, low == high == the first index where title >= key_title
+    // or size meaning insert is at the end
+    return low;
+}
 
 /**
  * adds a movie to the sorted vector.
@@ -24,7 +56,8 @@
  * @param movie the movie to add
 */
 void add_to_sorted_vector(SortedMovieVector * vector, Movie * movie) {
-    // STUDENT TODO: implement this function
+    int insert_index = lower_bound_by_title(vector, movie->title);
+    vector_insert(vector, movie, insert_index);
 }
 
 /**
@@ -43,11 +76,20 @@ void add_to_sorted_vector(SortedMovieVector * vector, Movie * movie) {
  * @return the movie if found, NULL otherwise
  */
 Movie * find_in_sorted_vector(SortedMovieVector * vector, const char * title) {
-    // STUDENT TODO: implement this function
+    if (vector == NULL || vector->size == 0) {
+        return NULL;
+    }
 
-    // if the movie is not found, return NULL
-    return NULL;
+    int index = lower_bound_by_title(vector, title);
+
+    if (index < vector->size && strcasecmp(vector->movies[index]->title, title) == 0) {
+        // exact match
+        return vector->movies[index];
+    }
+
+    return NULL; // not found
 }
+
 
 /**
  * Checks if the sorted vector contains a movie with the given title.
@@ -65,7 +107,15 @@ Movie * find_in_sorted_vector(SortedMovieVector * vector, const char * title) {
  * @return the movie removed, NULL otherwise
  */
 Movie* sorted_vector_remove(SortedMovieVector *vector, const char *title){
-    // STUDENT TODO: implement this function
+    if (vector == NULL || vector->size == 0) {
+        return NULL;
+    }
 
-    return NULL; // not found
+    int index = lower_bound_by_title(vector, title);
+
+    if (index < vector->size && strcasecmp(vector->movies[index]->title, title) == 0) {
+        return vector_remove(vector, index);
+    }
+    // not found
+    return NULL;
 }
