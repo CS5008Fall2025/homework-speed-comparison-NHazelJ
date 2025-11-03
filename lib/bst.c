@@ -1,9 +1,9 @@
 /**
  * Basic BST implementation.
  *
- * @author: STUDENT ADD YOUR NAME
+ * @author: Najib Mosquera
  * @class: CS 5008
- * @term: UPDATE WITH CURRENT SEMESTER
+ * @term: Fall 2025
  */
 
 #include <stdbool.h>
@@ -51,7 +51,8 @@ void __bst__free_node(BSTNode * node, bool clear) {
     if (node == NULL) {
         return;
     }
-    // STUDENT TODO: update this comment - is this, pre, post, or in order traversal?
+    // post order traversal
+    // free left subtree then free right subtree then free node and then free current node
     __bst__free_node(node->left, clear);
     __bst__free_node(node->right, clear);
     if (clear) {
@@ -91,8 +92,29 @@ void clear_and_free_bst(BST * bst) {
  * @param movie the movie to add 
 */
 void __bst__add(BSTNode * curr, Movie * movie) {
-   // STUDENT TODO: implement this function
+    // compare the movie we want to insert with the movie at this node
+    int comparison = compare_movies(movie, curr->movie);
+
+    if (comparison < 0) {
+        // new movie belongs to the left usually smaller than current
+        if (curr->left == NULL) {
+            // found the spot so create and attach a new node here
+            curr->left = __bst__new_node(movie);
+            return;
+        }
+        // otherwise keep going down the left subtree
+        __bst__add(curr->left, movie);
+
+    } else {
+        // comparison is greater or equal to 0 goes to the RIGHT allowing duplicates
+        if (curr->right == NULL) {
+            curr->right = __bst__new_node(movie);
+            return;
+        }
+        __bst__add(curr->right, movie);
+    }
 }
+
 /**
  * Adds the given movie into the BST. 
  * Handles the root case, but then calls the recursive helper
@@ -185,9 +207,22 @@ void bst_remove(BST * bst, Movie * movie) {
  * @return the node that was found
 */
 BSTNode * __bst__find(BSTNode * curr, const char * title) {
-   // STUDENT TODO: implement this function
+   if (curr == NULL || title == NULL) {
+        return NULL;
+    }
 
-   return NULL; // STUDENT TODO: update this return statement if needed
+    int comparison = strcasecmp(title, curr->movie->title);
+
+    if (comparison == 0) {
+        // title matches exactly so found it
+        return curr;
+    } else if (comparison < 0) {
+        // title we want is smaller so search left subtree
+        return __bst__find(curr->left, title);
+    } else {
+        // title we want is greater so search right subtree
+        return __bst__find(curr->right, title);
+    }
 }
 
 /**
@@ -250,7 +285,13 @@ char * __bst__update_str(Movie * movie, char * str) {
  * @return the string that was appended to
 */
 char * __bst__to_str_postorder(BSTNode * curr, char * str) {
-    // STUDENT TODO: implement this function
+    if (curr == NULL) {
+        // nothing to add
+        return str;
+    }
+    str = __bst__to_str_postorder(curr->left, str);
+    str = __bst__to_str_postorder(curr->right, str);
+    str = __bst__update_str(curr->movie, str);
     return str;
 }
 
@@ -266,7 +307,12 @@ char * __bst__to_str_postorder(BSTNode * curr, char * str) {
  *
  */
 char * __bst__to_str_preorder(BSTNode * curr, char * str) {
-    // STUDENT TODO: implement this function
+    if (curr == NULL) {
+        return str;
+    }
+    str = __bst__update_str(curr->movie, str);
+    str = __bst__to_str_preorder(curr->left, str);
+    str = __bst__to_str_preorder(curr->right, str);
     return str;
 }
 
@@ -282,7 +328,12 @@ char * __bst__to_str_preorder(BSTNode * curr, char * str) {
  * @return the string that was appended to
 */
 char * __bst__to_str_inorder(BSTNode * curr, char * str) {
-    // STUDENT TODO: implement this function
+    if (curr == NULL) {
+        return str;
+    }
+    str = __bst__to_str_inorder(curr->left, str);
+    str = __bst__update_str(curr->movie, str);
+    str = __bst__to_str_inorder(curr->right, str);
     return str;
 }
 
@@ -364,7 +415,18 @@ char * bst_to_str(BST * tree, int traversal) {
  * 
 */
 void __bst__to_sorted_array(BSTNode * curr, Movie ** array, int * index) {
-    // STUDENT TODO: implement this function
+    if (curr == NULL) {
+        return;
+    }
+    // visit left subtree first for smaller values
+    __bst__to_sorted_array(curr->left, array, index);
+
+    // store current node movie and advance the shared index
+    array[*index] = curr->movie;
+    (*index)++;
+
+    // then visit right subtree for larger values
+    __bst__to_sorted_array(curr->right, array, index);
 }
 
 /**
