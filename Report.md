@@ -168,18 +168,18 @@ For both these questions, are you are free to use what you did as the last secti
 Add your references here. A good reference includes an inline citation, such as [1] , and then down in your references section, you include the full details of the reference. Computer Science research often uses [IEEE] or [ACM Reference format].
 
 [1] T. H. Cormen, C. E. Leiserson, R. L. Rivest, and C. Stein. 2022. Introduction to Algorithms (4th ed.). MIT Press.
-https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/.
-[2] R. Sedgewick and K. Wayne. 2011. Algorithms (4th ed.). Addison-Wesley.
-https://algs4.cs.princeton.edu/home/.
+https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/.  
+[2] R. Sedgewick and K. Wayne. 2011. Algorithms (4th ed.). Addison-Wesley.  
+https://algs4.cs.princeton.edu/home/.  
 [3] The Open Group. 2018. strcasecmp — Compare Strings (Case-Insensitive). In The Open Group Base Specifications Issue 7, IEEE Std 1003.1-2017 (POSIX.1-2017).
-https://pubs.opengroup.org/onlinepubs/9699919799/functions/strcasecmp.html.
+https://pubs.opengroup.org/onlinepubs/9699919799/functions/strcasecmp.html.  
 [4] GeeksforGeeks. 2025. “Time Complexity of Common Linked List Operations.”
-https://www.geeksforgeeks.org/linked-list-set-1-introduction/.
-[5]  N. Wirth. 1976. *Algorithms + Data Structures = Programs*. Prentice Hall.
-[6]  M. Goodrich and R. Tamassia. 2011. *Data Structures and Algorithms in C++* (2nd ed.). Wiley.
-[7]  M. T. Goodrich. 2020. “Balanced Trees and Random Input Behavior.” *University of California Irvine Lecture Notes*. https://www.ics.uci.edu/~goodrich/
-[8]  G. Adelson-Velsky and E. Landis. 1962. “An Algorithm for the Organization of Information.” *Proceedings of the USSR Academy of Sciences*, Vol. 146, pp. 263–266.
-[9]  J. Bentley. 1984. “Programming Pearls: Binary Search Revisited.” *Communications of the ACM*, 27(12), 1081–1084.
+https://www.geeksforgeeks.org/linked-list-set-1-introduction/.  
+[5]  N. Wirth. 1976. *Algorithms + Data Structures = Programs*. Prentice Hall.  
+[6]  M. Goodrich and R. Tamassia. 2011. *Data Structures and Algorithms in C++* (2nd ed.). Wiley.  
+[7]  M. T. Goodrich. 2020. “Balanced Trees and Random Input Behavior.” *University of California Irvine Lecture Notes*. https://www.ics.uci.edu/~goodrich/  
+[8]  G. Adelson-Velsky and E. Landis. 1962. “An Algorithm for the Organization of Information.” *Proceedings of the USSR Academy of Sciences*, Vol. 146, pp. 263–266.  
+[9]  J. Bentley. 1984. “Programming Pearls: Binary Search Revisited.” *Communications of the ACM*, 27(12), 1081–1084.  
 
 [^1^]: Implementing a BST with a self-balancing algorithm, such as AVL or Red-Black Trees is a great research paper topic!
 
