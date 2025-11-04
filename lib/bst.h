@@ -2,9 +2,9 @@
  * A binary search tree implementation designed
  * to hold Movie structs.
  * 
- * @author: STUDENT ADD YOUR NAME
+ * @author: Najib Mosquera
  * @class: CS 5008
- * @term: UPDATE WITH CURRENT SEMESTER
+ * @term: Fall 2025
 */
 
 #ifndef BST_H
