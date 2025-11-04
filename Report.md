@@ -159,13 +159,16 @@ From this speed comparison, I learned how different data structures balance trad
 
 For both these questions, are you are free to use what you did as the last section on the team activities/answered as a group, or you can use a different question.
 
-1. Select one technical interview question (this module or previous) from the [technical interview list](https://github.com/CS5008-khoury/Resources/blob/main/TechInterviewQuestions.md) below and answer it in a few sentences. You can use any resource you like to answer the question.
+1. Select one technical interview question (this module or previous) from the [technical interview list](https://github.com/CS5008-khoury/Resources/blob/main/TechInterviewQuestions.md) below and answer it in a few sentences. You can use any resource you like to answer the question.  
+How does a binary tree differ from a binary search tree?  
+A binary tree is a general data structure in which each node can have up to two children, typically called the left and right child. However, there is no specific order to how the data is arranged. A binary search tree, BST, on the other hand, follows a strict ordering rule: for every node, all values in the left subtree are smaller, and all values in the right subtree are larger. This ordering property allows efficient searching, insertion, and deletion operations, usually in log time. In contrast, a regular binary tree does not guarantee such efficiency since elements are not organized for fast lookups.  
 
-2. Select one coding question (this module or previous) from the [coding practice repository](https://github.com/CS5008-khoury/Resources/blob/main/LeetCodePractice.md) and include a c file with that code with your submission. Make sure to add comments on what you learned, and if you compared your solution with others. 
+2. Select one coding question (this module or previous) from the [coding practice repository](https://github.com/CS5008-khoury/Resources/blob/main/LeetCodePractice.md) and include a c file with that code with your submission. Make sure to add comments on what you learned, and if you compared your solution with others.  
+
+94. Binary Tree Inorder Traversal  
+ ![Binary Tree Inorder Traversal](binary_tree_inorder_traversal_answer_94.png)  
 
 ## References
-
-Add your references here. A good reference includes an inline citation, such as [1] , and then down in your references section, you include the full details of the reference. Computer Science research often uses [IEEE] or [ACM Reference format].
 
 [1] T. H. Cormen, C. E. Leiserson, R. L. Rivest, and C. Stein. 2022. Introduction to Algorithms (4th ed.). MIT Press.
 https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/.  
